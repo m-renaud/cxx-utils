@@ -27,32 +27,32 @@ implementation of *embarrassingly parallel* algorithms.
 
 ### Contents ###
 
-* `template <typename Iterator, typename T>
-T accumulate(Iterator first, Iterator last, T init);`
+* `template <typename Iterator, typename T>`
+  `T accumulate(Iterator first, Iterator last, T init);`
 
-* `template <typename Iterator, typename T>
-auto count(Iterator first, Iterator last, T const& value)
-  -> typename std::iterator_traits<Iterator>::difference_type;`
+* `template <typename Iterator, typename T>`
+  `auto count(Iterator first, Iterator last, T const& value)`
+  `-> typename std::iterator_traits<Iterator>::difference_type;`
 
-* `template <typename Iterator, typename Pred>
-auto count_if(Iterator first, Iterator last, Pred const& pred)
-  -> typename std::iterator_traits<Iterator>::difference_type;`
+* `template <typename Iterator, typename Pred>`
+  `auto count_if(Iterator first, Iterator last, Pred const& pred)`
+  `-> typename std::iterator_traits<Iterator>::difference_type;`
 
-* `template <typename Iterator, typename T>
-void fill(Iterator first, Iterator last, T const& value);`
+* `template <typename Iterator, typename T>`
+  `void fill(Iterator first, Iterator last, T const& value);`
 
-* `template <typename Iterator, typename Func>
-void for_each(Iterator first, Iterator last, Func const& func);`
+* `template <typename Iterator, typename Func>`
+  `void for_each(Iterator first, Iterator last, Func const& func);`
 
-* `template <typename Iterator>
-Iterator max_element(Iterator first, Iterator last);`
+* `template <typename Iterator>`
+  `Iterator max_element(Iterator first, Iterator last);`
 
-* `template <typename Iterator>
-Iterator min_element(Iterator first, Iterator last);`
+* `template <typename Iterator>`
+  `Iterator min_element(Iterator first, Iterator last);`
 
-* `template <typename Iterator, typename T>
-void replace(Iterator first, Iterator last, T const& old_val, T const& new_val);`
+* `template <typename Iterator, typename T>`
+  `void replace(Iterator first, Iterator last, T const& old_val, T const& new_val);`
 
-* `template <typename Iterator, typename Pred, typename T>
-void replace_if(Iterator first, Iterator last, Pred const& pred, T const& new_val);`
+* `template <typename Iterator, typename Pred, typename T>`
+  `void replace_if(Iterator first, Iterator last, Pred const& pred, T const& new_val);`
 
