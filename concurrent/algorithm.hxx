@@ -247,7 +247,7 @@ template <typename Algorithm, typename Iterator, typename... Args>
 auto in_parallel(Iterator first, Iterator last, Args&&... args)
   -> typename std::enable_if<
        std::is_void<decltype(
-                       Algorithm::apply(first,last,std::forward<Args>(args)...)
+                      Algorithm::apply(first,last,std::forward<Args>(args)...)
        )>::value,
        void
      >::type
