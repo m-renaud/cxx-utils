@@ -10,8 +10,9 @@
 
 namespace mrr {
 
-template <typename T>
-std::istream& discard(std::istream& is)
+template <typename T, typename Char, typename Traits>
+auto discard(std::basic_istream<Char,Traits>& is)
+  -> std::basic_istream<Char,Traits>&
 {
   T t;
   is >> t;

@@ -10,10 +10,15 @@ coding.
 
 #### `template <typename T> std::istream& discard(std::istream&);` ####
 This function discards the next occurence of type `T` from an istream.
+For brevity here, `discard` takes a `std::istream` but in the
+implementation it is templated over `Char` and `Traits` and uses
+`std::basic_istream<Char,Traits>`.
+
 
 #### `template <typename T> std::string to_string(T const& t);` ####
 This functions returns the value of type T as a string using
-`std::stringstream`.
+`std::stringstream` although, this function in now available in the
+standard since C++11.
 
 #### `template <typename ClockType> class stopwatch` ####
 This class can be used to time running times of algorithms using the
