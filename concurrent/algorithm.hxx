@@ -207,7 +207,7 @@ auto in_parallel(Iterator first, Iterator last, Args&&... args)
   if(length == 0)
     return 0;
 
-  const unsigned num_threads = std::thread::hardware_concurrency();
+  const unsigned num_threads = std::max(1u, std::thread::hardware_concurrency());
   const difference_type block_size = length/num_threads;
 
   std::vector<std::future<return_type> > threads(num_threads - 1);
@@ -260,7 +260,7 @@ auto in_parallel(Iterator first, Iterator last, Args&&... args)
   if(length == 0)
     return;
 
-  const unsigned num_threads = std::thread::hardware_concurrency();
+  const unsigned num_threads = std::max(1u, std::thread::hardware_concurrency());
   const difference_type block_size = length/num_threads;
 
   std::vector<std::thread> threads(num_threads - 1);
