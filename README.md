@@ -61,3 +61,7 @@ implementation of *embarrassingly parallel* algorithms.
 * `template <typename Iterator, typename Pred, typename T>`
   `void replace_if(Iterator first, Iterator last, Pred const& pred, T const& new_val);`
 
+## `scope_guard` ##
+
+An implementation of Andrei Alexandrescu's `scope_guard` leveraging
+RAII to handle resource cleanup even when exceptions can be thrown.
