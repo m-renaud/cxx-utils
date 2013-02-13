@@ -1,5 +1,5 @@
-#ifndef MRR_STOPWATCH_HXX_
-#define MRR_STOPWATCH_HXX_
+#ifndef MRR_CXX_UTILS_STOPWATCH_HXX_
+#define MRR_CXX_UTILS_STOPWATCH_HXX_
 
 #include <chrono>
 #include <numeric>
@@ -53,4 +53,4 @@ private:
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
-#endif // MRR_STOPWATCH_HXX_
+#endif // MRR_CXX_UTILS_STOPWATCH_HXX_

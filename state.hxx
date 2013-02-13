@@ -1,5 +1,5 @@
-#ifndef MRR_STATE_HXX_
-#define MRR_STATE_HXX_
+#ifndef MRR_CXX_UTILS_STATE_HXX_
+#define MRR_CXX_UTILS_STATE_HXX_
 
 #include <chrono>
 #include <tuple>
