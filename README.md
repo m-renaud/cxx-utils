@@ -2,29 +2,6 @@
 This directory contains my personal C++ utility headers and libraries.
 
 
-## `utility.hxx` ##
-Contains common utility functions that are useful for everday
-coding.
-
-### Contents ###
-
-#### `template <typename T> std::istream& discard(std::istream&);` ####
-This function discards the next occurence of type `T` from an istream.
-For brevity here, `discard` takes a `std::istream` but in the
-implementation it is templated over `Char` and `Traits` and uses
-`std::basic_istream<Char,Traits>`.
-
-
-#### `template <typename T> std::string to_string(T const& t);` ####
-This functions returns the value of type T as a string using
-`std::stringstream` although, this function in now available in the
-standard since C++11.
-
-#### `template <typename ClockType> class stopwatch` ####
-This class can be used to time running times of algorithms using the
-new C++11 `<chrono>` header.
-
-
 ## `concurrent/algorithm.hxx` ##
 
 Concurrent version of the standard `<algorithm>` header with
@@ -61,12 +38,46 @@ implementation of *embarrassingly parallel* algorithms.
 * `template <typename Iterator, typename Pred, typename T>`
   `void replace_if(Iterator first, Iterator last, Pred const& pred, T const& new_val);`
 
+
+
 ## `scope_guard` ##
 
 An implementation of Andrei Alexandrescu's `scope_guard` leveraging
 RAII to handle resource cleanup even when exceptions can be thrown.
 
 
+
 ## `state` ##
 
-Lightweight class to easily save and restore state of a set of variables.
+Lightweight class to easily save and restore state of a set of
+variables.
+
+
+
+## `stopwatch.hxx` ##
+
+#### `template <typename ClockType> class stopwatch` ####
+This class can be used to time running times of algorithms using the
+new C++11 `<chrono>` header.
+
+
+
+## `utility.hxx` ##
+Contains common utility functions that are useful for everday
+coding.
+
+### Contents ###
+
+#### `template <typename T> std::istream& discard(std::istream&);` ####
+This function discards the next occurence of type `T` from an istream.
+For brevity here, `discard` takes a `std::istream` but in the
+implementation it is templated over `Char` and `Traits` and uses
+`std::basic_istream<Char,Traits>`.
+
+
+#### `template <typename T> std::string to_string(T const& t);` ####
+This functions returns the value of type T as a string using
+`std::stringstream` although, this function in now available in the
+standard since C++11.
+
+
