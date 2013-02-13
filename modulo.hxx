@@ -7,93 +7,101 @@ namespace mrr {
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-template <int N, typename IntType = unsigned long long>
+template <std::size_t N, typename IntType = unsigned long long>
 struct modulo
 {
   using value_type = IntType;
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  modulo(int v)
-    : val(v%N)
+  modulo() = default;
+
+  modulo(modulo const&) = default;
+  modulo& operator =(modulo const&) = default;
+
+  modulo(modulo&&) = default;
+  modulo& operator =(modulo&&) = default;
+
+  ~modulo() = default;
+
+
+  modulo(value_type const& v)
+    : val(v % N)
   {
   }
 
-  modulo(modulo<N> const& mv)
-    : val(mv)
-  {
-  }
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  modulo<N>& operator +=(modulo<N> const& rhs)
+  void swap(modulo& other)
+  {
+    using std::swap;
+    swap(val, other.val);
+  }
+
+
+  //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  modulo& operator +=(modulo const& rhs)
   {
     val = (val + rhs.val) % N;
     return *this;
   }
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  modulo<N>& operator -=(modulo<N> const& rhs)
+  modulo& operator -=(modulo const& rhs)
   {
-    if(val < rhs.val)
-      val+=N;
+    while(val < rhs.val)
+      val += N;
+
     val -= rhs.val;
     return *this;
   }
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  modulo<N>& operator *=(modulo<N> const& rhs)
+  modulo& operator *=(modulo const& rhs)
   {
     val = (val * rhs.val) % N;
     return *this;
   }
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  const modulo<N> operator +(int const& rhs)
+  const modulo operator +(value_type const& rhs)
   {
-    return (modulo<N>(*this) += rhs);
+    return (modulo(*this) += rhs);
   }
 
-  const modulo<N> operator +(modulo<N> const& rhs)
+  const modulo operator +(modulo const& rhs)
   {
-    return (modulo<N>(*this) += rhs);
-  }
-
-  //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  const modulo<N> operator -(int const& rhs)
-  {
-    return (modulo<N>(*this) -= rhs);
-  }
-
-  const modulo<N> operator -(modulo<N> const& rhs)
-  {
-    return (modulo<N>(*this) -= rhs);
+    return (modulo(*this) += rhs);
   }
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  const modulo<N> operator *(int const& rhs)
+  const modulo operator -(value_type const& rhs)
   {
-    return (modulo<N>(*this) *= rhs);
+    return (modulo(*this) -= rhs);
   }
 
-  const modulo<N> operator *(modulo<N> const& rhs)
+  const modulo operator -(modulo const& rhs)
   {
-    return (modulo<N>(*this) *= rhs);
+    return (modulo(*this) -= rhs);
   }
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  modulo<N>& operator =(modulo<N> const& rhs)
+  const modulo operator *(value_type const& rhs)
   {
-    val = rhs.val;
-    return *this;
+    return (modulo(*this) *= rhs);
   }
 
+  const modulo operator *(modulo const& rhs)
+  {
+    return (modulo(*this) *= rhs);
+  }
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   bool operator ==(int const& rhs)
   {
-    return val == modulo<N>(rhs);
+    return val == modulo(rhs);
   }
 
-  bool operator ==(modulo<N> const& rhs)
+  bool operator ==(modulo const& rhs)
   {
     return val == rhs.val;
   }
@@ -101,10 +109,10 @@ struct modulo
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   bool operator !=(int const& rhs)
   {
-    return !(*this == modulo<N>(rhs));
+    return !(*this == modulo(rhs));
   }
 
-  bool operator !=(modulo<N> const& rhs)
+  bool operator !=(modulo const& rhs)
   {
     return !(*this == rhs);
   }
