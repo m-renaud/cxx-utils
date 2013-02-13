@@ -65,3 +65,8 @@ implementation of *embarrassingly parallel* algorithms.
 
 An implementation of Andrei Alexandrescu's `scope_guard` leveraging
 RAII to handle resource cleanup even when exceptions can be thrown.
+
+
+## `state` ##
+
+Lightweight class to easily save and restore state of a set of variables.
