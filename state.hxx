@@ -37,6 +37,11 @@ public:
   {
   }
 
+  state(state_type&& tup)
+    : s_(std::move(tup)), save_point_(clock_type::now())
+  {
+  }
+
   // Get the time that the state was saved at.
   time_point const& save_point()
   {
@@ -73,6 +78,19 @@ template <typename... TS>
 state<TS...> save_state(TS... ts)
 {
   return state<TS...>(std::move(ts)...);
+}
+
+
+template <typename... TS>
+state<TS...> save_state(std::tuple<TS...> const& tup)
+{
+  return state<TS...>(tup);
+}
+
+template <typename... TS>
+state<TS...> save_state(std::tuple<TS...>&& tup)
+{
+  return state<TS...>(std::move(tup));
 }
 
 //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
