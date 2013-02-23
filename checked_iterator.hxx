@@ -71,6 +71,7 @@ public:
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   // Increment and decrement operators.
+  // The prefix does the checking, the postfix simply invokes the prefix.
   checked_iterator& operator ++()
   {
     using std::end;
@@ -109,12 +110,12 @@ public:
 
 
   //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-  // Addition and subtraction operators.
+  // Addition assignment and subtraction assignment operators.
   checked_iterator& operator +=(difference_type d)
   {
     using std::end;
 
-    if (end(*cont_) - current_ <= d)
+    if (end(*cont_) - current_ < d)
       throw std::out_of_range(
         "Attempt to move past end with += " + std::to_string(d) + " detected"
       );
@@ -125,6 +126,14 @@ public:
 
   checked_iterator& operator -=(difference_type d)
   {
+    using std::begin;
+
+    if (current - begin(*cont_) < d)
+      throw std::out_of_range(
+        "Attempt to move before begin with -= "
+        + std::to_string(d) + " detected"
+      );
+
     current_ -= d;
     return *this;
   }
