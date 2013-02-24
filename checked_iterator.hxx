@@ -194,21 +194,19 @@ private:
   // Check the validity of the iterator passed in w.r.t. the container.
   void valid(Iter p)
   {
-    using std::end;
-
-    if (p == end(*cont_))
-      return;
-
     if (valid_helper(p, typename traits_type::iterator_category()))
       return;
-
-    throw std::out_of_range("Invalid iterator provided to constructor");
+    else
+      throw std::out_of_range("Invalid iterator provided to constructor");
   }
 
   bool valid_helper(Iter p, std::input_iterator_tag)
   {
     using std::begin;
     using std::end;
+
+    if (p == end(*cont_))
+      return true;
 
     for (Iter i = begin(*cont_); i != end(*cont_); ++i)
       if(i == p)
