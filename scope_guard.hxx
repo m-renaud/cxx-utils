@@ -7,7 +7,11 @@
 
 #include <utility>
 
+//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 namespace mrr {
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 template <typename Func>
 class scope_guard
@@ -57,6 +61,11 @@ scope_guard<Func> make_scope_guard(Func&& f)
   return scope_guard<Func>(std::forward<Func>(f));
 }
 
+//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 } // namespace mrr
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 
 #endif // #ifndef MRR_UTILITY_SCOPE_GUARD_
