@@ -10,6 +10,7 @@ implementation of *embarrassingly parallel* algorithms.
 ### Contents ###
 
 * `template <typename Iterator, typename T>`
+
   `T accumulate(Iterator first, Iterator last, T init);`
 
 * `template <typename Iterator, typename T>`
@@ -38,6 +39,24 @@ implementation of *embarrassingly parallel* algorithms.
 * `template <typename Iterator, typename Pred, typename T>`
   `void replace_if(Iterator first, Iterator last, Pred const& pred, T const& new_val);`
 
+
+## `checked_iterator` ##
+
+Useful iterator class that does bounds checking on construction as
+well as modifying operations. Useful for debugging code using
+iterators. 
+
+
+## `modulo` ##
+
+Class to easily handle modular arithmetic.
+
+
+## `monitor` ##
+
+Implementation of `monitor<T>` with additions from Sutter's talk on
+concurrency and parallelism. Used to synchronize operations on a type
+by locking around member functions.
 
 
 ## `scope_guard` ##
