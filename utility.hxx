@@ -28,6 +28,19 @@ std::string to_string(T const& t)
   return ss.str();
 }
 
+template <typename Ch, typename Tr>
+std::basic_istream<Ch,Tr>& discard_input(std::basic_istream<Ch,Tr>& is)
+{
+  std::streamsize const available_chars = is.rdbuf()->in_avail();
+
+  if (available_chars > 0)
+    for (std::streamsize pos = 0; pos != available_chars; ++pos)
+      is.get();
+
+  return is;
+}
+
+
 //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 } // namespace mrr

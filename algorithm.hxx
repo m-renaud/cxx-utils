@@ -16,6 +16,13 @@
 //m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 namespace mrr {
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Concurrent Algorithms.
+
 namespace concurrent {
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -349,12 +356,31 @@ void replace_if(Iterator first, Iterator last, Pred const& pred, T const& new_va
 }
 
 
-//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
+//m----------------------------------------------------------------------
 } // namespace concurrent
-} // namespace mrr
+//-----------------------------------------------------------------------
 
-//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Online Algorithms.
+
+// Online Average Calculation.
+//   From: The Art of Computer Programming Vol. 2, Third Edition, Page 232
+//
+// M : Previous mean.
+// x : Next value in the sequence.
+// k : Element number you are processing.
+template <typename T, typename Count>
+T online_average(T M, T const& x, Count k)
+{
+  return M += (x - M) / k;
+}
+
+
+//m----------------------------------------------------------------------
+} // namespace mrr
+//-----------------------------------------------------------------------
 
 
 #endif // #ifndef MRR_CONCURRENT_ALGORITHM_HXX_
